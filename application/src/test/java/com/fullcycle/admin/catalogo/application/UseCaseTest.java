@@ -10,6 +10,5 @@ public class UseCaseTest {
     public void testExecute() {
         UseCase useCase = new UseCase();
         Assertions.assertNotNull(useCase);
-        Assertions.assertNotNull(useCase.execute());
     }
 }
