@@ -6,7 +6,7 @@ import java.util.function.Function;
 public record Pagination<T>(
         int currentPage,
         int perPage,
-        int total,
+        long total,
         List<T> items
 
 
