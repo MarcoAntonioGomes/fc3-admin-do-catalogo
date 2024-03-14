@@ -5,6 +5,7 @@ import com.fullcycle.admin.catalogo.domain.category.Category;
 import com.fullcycle.admin.catalogo.domain.category.CategoryGateway;
 import com.fullcycle.admin.catalogo.domain.category.CategoryID;
 import com.fullcycle.admin.catalogo.domain.exceptions.DomainException;
+import com.fullcycle.admin.catalogo.domain.exceptions.NotFoundException;
 import com.fullcycle.admin.catalogo.domain.handler.Notification;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -148,17 +149,11 @@ public class UpdateCategoryUseCaseTest {
 
     @Test
     public void givenACommandWithInvalidId_whenCallUpdateCategory_thenShouldReturnNotFoundException() {
-        final var aCategory = Category.newCategory("Film", null, true);
-
-        Assertions.assertTrue(aCategory.isActive());
-        Assertions.assertNull(aCategory.getDeletedAt());
-
         final var expectedName = "Filmes";
-        final var expectedDescription = "Categoria de filmes";
+        final var expectedDescription = "A categoria mais assistida";
         final var expectedIsActive = false;
         final var expectedId = "123";
         final var expectedErrorMessage = "Category with ID 123 was not found";
-        final var expectedErrorCount = 1;
 
         final var aCommand = UpdateCategoryCommand.with(
                 expectedId,
@@ -167,18 +162,18 @@ public class UpdateCategoryUseCaseTest {
                 expectedIsActive
         );
 
+        when(categoryGateway.findById(eq(CategoryID.from(expectedId))))
+                .thenReturn(Optional.empty());
 
-        when(categoryGateway.findById(eq(CategoryID.from(expectedId)))).thenReturn(Optional.empty());
+        final var actualException =
+                Assertions.assertThrows(NotFoundException.class, () -> useCase.execute(aCommand));
 
+        Assertions.assertEquals(expectedErrorMessage, actualException.getMessage());
 
-        final var actualException = Assertions.assertThrows(DomainException.class, () -> useCase.execute(aCommand));
+        Mockito.verify(categoryGateway, times(1)).findById(eq(CategoryID.from(expectedId)));
 
-
-        Assertions.assertEquals(expectedErrorCount, actualException.getErrors().size());
-        Assertions.assertEquals(expectedErrorMessage, actualException.getErrors().get(0).message());
-        verify(categoryGateway, times(1)).findById(CategoryID.from(expectedId));
-
-        verify(categoryGateway, times(0)).update(any());
+        Mockito.verify(categoryGateway, times(0)).update(any());
     }
+
 
 }

@@ -61,17 +61,17 @@ public class CategoryMySQLGateway implements CategoryGateway {
                 Sort.by(Sort.Direction.fromString(aQuery.direction()), aQuery.sort())
         );
 
-        final var specification = Optional.ofNullable(aQuery.terms())
+        final var specifications = Optional.ofNullable(aQuery.terms())
                 .filter(str -> !str.isBlank())
-                .map (str ->
-                    SpecificationUtils
-                           .<CategoryJPAEntity>like("name", str)
-                            .or(like("description", str))
+                .map(str -> {
+                    final Specification<CategoryJPAEntity> nameLike = like("name", str);
+                    final Specification<CategoryJPAEntity> descriptionLike = like("description", str);
+                    return nameLike.or(descriptionLike);
+                })
+                .orElse(null);
 
-                ).orElse(null);
 
-
-        var pageResult = this.repository.findAll(Specification.where(specification), page);
+        var pageResult = this.repository.findAll(Specification.where(specifications), page);
 
 
         return new Pagination<>(

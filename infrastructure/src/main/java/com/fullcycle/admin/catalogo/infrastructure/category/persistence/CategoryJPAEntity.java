@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.Instant;
 
-@Entity
-@Table(name = "category")
+@Entity(name = "Category")
+@Table(name = "categories")
 public class CategoryJPAEntity {
 
     @Id
