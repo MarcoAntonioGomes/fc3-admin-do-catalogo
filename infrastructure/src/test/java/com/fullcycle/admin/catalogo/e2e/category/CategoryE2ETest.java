@@ -4,7 +4,7 @@ package com.fullcycle.admin.catalogo.e2e.category;
 import com.fullcycle.admin.catalogo.E2ETEST;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.context.annotation.ComponentScan;
+
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.MySQLContainer;
