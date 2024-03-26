@@ -1,6 +1,7 @@
 package com.fullcycle.admin.catalogo.application.category.retrieve.get;
 
 
+import com.fullcycle.admin.catalogo.application.UseCaseTest;
 import com.fullcycle.admin.catalogo.domain.category.Category;
 import com.fullcycle.admin.catalogo.domain.category.CategoryGateway;
 import com.fullcycle.admin.catalogo.domain.category.CategoryID;
@@ -19,8 +20,8 @@ import java.util.Optional;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class)
-public class GetCategoryByIdUseCaseTest {
+
+public class GetCategoryByIdUseCaseTest extends UseCaseTest {
 
     @InjectMocks
     private DefaultGetCategoryByIdUseCase useCase;
@@ -29,9 +30,9 @@ public class GetCategoryByIdUseCaseTest {
     private CategoryGateway categoryGateway;
 
 
-    @BeforeEach
-    void clean() {
-        Mockito.reset(categoryGateway);
+    @Override
+    protected java.util.List<Object> getMocks() {
+        return java.util.List.of(categoryGateway);
     }
 
     @Test

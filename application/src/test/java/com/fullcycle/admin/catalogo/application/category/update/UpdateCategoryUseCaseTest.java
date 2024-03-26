@@ -1,5 +1,6 @@
 package com.fullcycle.admin.catalogo.application.category.update;
 
+import com.fullcycle.admin.catalogo.application.UseCaseTest;
 import com.fullcycle.admin.catalogo.application.category.create.CreateCategoryCommand;
 import com.fullcycle.admin.catalogo.domain.category.Category;
 import com.fullcycle.admin.catalogo.domain.category.CategoryGateway;
@@ -24,8 +25,8 @@ import java.util.Optional;
 
 import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class)
-public class UpdateCategoryUseCaseTest {
+
+public class UpdateCategoryUseCaseTest extends UseCaseTest {
 
     @InjectMocks
     private DefaultUpdateCategoryUseCase useCase;
@@ -36,6 +37,11 @@ public class UpdateCategoryUseCaseTest {
     @BeforeEach
     void clean() {
         Mockito.reset(categoryGateway);
+    }
+
+    @Override
+    protected java.util.List<Object> getMocks() {
+        return java.util.List.of(categoryGateway);
     }
 
     @Test

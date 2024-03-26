@@ -1,6 +1,7 @@
 package com.fullcycle.admin.catalogo.application.category.create;
 
 
+import com.fullcycle.admin.catalogo.application.UseCaseTest;
 import com.fullcycle.admin.catalogo.domain.category.CategoryGateway;
 import com.fullcycle.admin.catalogo.domain.handler.Notification;
 import org.junit.jupiter.api.Assertions;
@@ -11,18 +12,24 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
 import java.util.Objects;
 
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 
-@ExtendWith(MockitoExtension.class)
-public class CreateCategoryUseCaseTest {
+
+public class CreateCategoryUseCaseTest extends UseCaseTest {
 
     @InjectMocks
     private DefaultCreateCategoryUseCase useCase;
 
     @Mock
     private CategoryGateway categoryGateway;
+
+    @Override
+    protected List<Object> getMocks() {
+        return List.of(categoryGateway);
+    }
 
     @Test
     public void givenAValidCommand_whenCallCreateCategory_shouldReturnCategoryId() {
@@ -141,5 +148,6 @@ public class CreateCategoryUseCaseTest {
 
                 ));
     }
+
 
 }
