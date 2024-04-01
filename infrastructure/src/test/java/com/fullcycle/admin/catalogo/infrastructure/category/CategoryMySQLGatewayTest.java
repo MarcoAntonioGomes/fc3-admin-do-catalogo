@@ -136,6 +136,33 @@ public class CategoryMySQLGatewayTest {
     }
 
     @Test
+    public void givenAPrePersistedCategory_whenCallsExistsByIds_shouldReturnIds() {
+
+        final var filmes = Category.newCategory("Filmes", null, true);
+        final var series = Category.newCategory("Series", null, true);
+        final var documentarios = Category.newCategory("Documentarios", null, true);
+
+        Assertions.assertEquals(0, categoryRepository.count());
+
+        categoryRepository.saveAll(List.of(
+                CategoryJPAEntity.from(filmes),
+                CategoryJPAEntity.from(series),
+                CategoryJPAEntity.from(documentarios)
+        ));
+
+        Assertions.assertEquals(3, categoryRepository.count());
+
+        final var expectedIds = List.of(filmes.getId(), series.getId());
+
+        final var ids = List.of(filmes.getId(), series.getId(),CategoryID.from("123"));
+
+        final var actualResult = categoryGateway.existsByIds(ids);
+
+        Assertions.assertTrue(actualResult.containsAll(expectedIds));
+
+    }
+
+    @Test
     public void givenInvalidCategoryId_whenTryToDeleteIt_shouldDeleteCategory(){
 
         Assertions.assertEquals(0, categoryRepository.count());
