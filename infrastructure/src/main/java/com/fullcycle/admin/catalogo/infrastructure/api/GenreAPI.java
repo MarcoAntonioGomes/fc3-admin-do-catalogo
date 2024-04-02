@@ -74,10 +74,10 @@ public interface GenreAPI {
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @Operation(summary = "delete a category by it's identifier")
+    @Operation(summary = "delete a genre by it's identifier")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Category successfully deleted"),
-            @ApiResponse(responseCode = "422", description = "Category was not found"),
+            @ApiResponse(responseCode = "200", description = "Genre successfully deleted"),
+            @ApiResponse(responseCode = "422", description = "Genre was not found"),
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     void deleteById(@PathVariable(name = "id") String id);
