@@ -305,4 +305,7 @@ public class CategoryE2ETest implements MockDsl {
         Assertions.assertEquals(0, categoryRepository.count());
     }
 
+
+
+
 }
