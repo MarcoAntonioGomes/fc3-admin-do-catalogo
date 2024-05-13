@@ -1,12 +1,11 @@
 package com.fullcycle.admin.catalogo.e2e.castmember;
 
 import com.fullcycle.admin.catalogo.E2ETEST;
-import com.fullcycle.admin.catalogo.Fixture;
+import com.fullcycle.admin.catalogo.domain.Fixture;
 import com.fullcycle.admin.catalogo.domain.castmember.CastMemberID;
 import com.fullcycle.admin.catalogo.domain.castmember.CastMemberType;
 import com.fullcycle.admin.catalogo.e2e.MockDsl;
 import com.fullcycle.admin.catalogo.infrastructure.castmember.persistence.CastMemberRepository;
-import com.fullcycle.admin.catalogo.infrastructure.category.persistence.CategoryRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

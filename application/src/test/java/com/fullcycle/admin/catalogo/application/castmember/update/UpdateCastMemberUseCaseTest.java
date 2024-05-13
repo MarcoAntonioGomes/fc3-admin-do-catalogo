@@ -1,7 +1,7 @@
 package com.fullcycle.admin.catalogo.application.castmember.update;
 
-import com.fullcycle.admin.catalogo.application.Fixture;
 import com.fullcycle.admin.catalogo.application.UseCaseTest;
+import com.fullcycle.admin.catalogo.domain.Fixture;
 import com.fullcycle.admin.catalogo.domain.castmember.CastMember;
 import com.fullcycle.admin.catalogo.domain.castmember.CastMemberGateway;
 import com.fullcycle.admin.catalogo.domain.castmember.CastMemberID;
@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import static java.lang.Thread.sleep;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.*;
@@ -35,7 +36,7 @@ public class UpdateCastMemberUseCaseTest extends UseCaseTest {
     }
 
     @Test
-    public void givenAValidCommand_whenCallsUpdateCastMember_shouldReturnItsIdentifier() {
+    public void givenAValidCommand_whenCallsUpdateCastMember_shouldReturnItsIdentifier() throws InterruptedException {
         // given
         final var aMember = CastMember.newMember("vin diesel", CastMemberType.DIRECTOR);
 
@@ -43,6 +44,7 @@ public class UpdateCastMemberUseCaseTest extends UseCaseTest {
         final var expectedName = Fixture.name();
         final var expectedType = CastMemberType.ACTOR;
 
+        sleep(1000);
         final var aCommand = UpdateCastMemberCommand.with(
                 expectedId.getValue(),
                 expectedName,

@@ -1,7 +1,6 @@
 package com.fullcycle.admin.catalogo.infrastructure.api;
 
 import com.fullcycle.admin.catalogo.ControllerTest;
-import com.fullcycle.admin.catalogo.Fixture;
 import com.fullcycle.admin.catalogo.application.castmember.create.CreateCastMemberOutput;
 import com.fullcycle.admin.catalogo.application.castmember.create.DefaultCreateCastMemberUseCase;
 import com.fullcycle.admin.catalogo.application.castmember.delete.DefaultDeleteCastMemberUseCase;
@@ -11,6 +10,7 @@ import com.fullcycle.admin.catalogo.application.castmember.retrieve.list.CastMem
 import com.fullcycle.admin.catalogo.application.castmember.retrieve.list.DefaultListCastMembersUseCase;
 import com.fullcycle.admin.catalogo.application.castmember.update.DefaultUpdateCastMemberUseCase;
 import com.fullcycle.admin.catalogo.application.castmember.update.UpdateCastMemberOutput;
+import com.fullcycle.admin.catalogo.domain.Fixture;
 import com.fullcycle.admin.catalogo.domain.castmember.CastMember;
 import com.fullcycle.admin.catalogo.domain.castmember.CastMemberID;
 import com.fullcycle.admin.catalogo.domain.castmember.CastMemberType;

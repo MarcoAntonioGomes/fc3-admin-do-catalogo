@@ -6,6 +6,7 @@ import com.fullcycle.admin.catalogo.domain.handler.ThrowsValidationHandler;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static java.lang.Thread.sleep;
 
 
 public class CategoryTest {
@@ -191,7 +192,7 @@ public class CategoryTest {
     }
 
     @Test
-    public void givenAValidInactiveCategory_whenCallActivate_thenReturnAnCategoryActivated(){
+    public void givenAValidInactiveCategory_whenCallActivate_thenReturnAnCategoryActivated() throws InterruptedException {
 
         final var expectedName = "Filmes";
         final var expectedDescription = "A categoria mais assistida";
@@ -208,6 +209,7 @@ public class CategoryTest {
         Assertions.assertFalse(aCategory.isActive());
         Assertions.assertNotNull(aCategory.getDeletedAt());
 
+        sleep(1000);
         final var actualCategory = aCategory.activate();
 
 
@@ -260,7 +262,7 @@ public class CategoryTest {
     }
 
     @Test
-    public void givenAValidCategory_whenCallUpdateToInactive_thenReturnAnCategoryUpdated(){
+    public void givenAValidCategory_whenCallUpdateToInactive_thenReturnAnCategoryUpdated() throws InterruptedException {
         final var expectedName = "Filmes";
         final var expectedDescription = "A categoria mais assistida";
         final var expectedIsActive = false;
@@ -276,6 +278,7 @@ public class CategoryTest {
         Assertions.assertTrue(aCategory.isActive());
         Assertions.assertNull(aCategory.getDeletedAt());
 
+        sleep(1000);
         final var actualCategory = aCategory.update(expectedName, expectedDescription, expectedIsActive);
 
         Assertions.assertDoesNotThrow(() -> {
@@ -294,7 +297,7 @@ public class CategoryTest {
     }
 
     @Test
-    public void givenAValidCategory_whenCallUpdateWithInvalidParams_thenReturnAnCategoryUpdated(){
+    public void givenAValidCategory_whenCallUpdateWithInvalidParams_thenReturnAnCategoryUpdated() throws InterruptedException {
         final String expectedName = null;
         final var expectedDescription = "A categoria mais assistida";
         final var expectedIsActive = true;
@@ -308,7 +311,7 @@ public class CategoryTest {
         final var createdAt = aCategory.getCreatedAt();
         final var updatedAt = aCategory.getUpdatedAt();
 
-
+        sleep(1000);
         final var actualCategory = aCategory.update(expectedName, expectedDescription, expectedIsActive);
 
 

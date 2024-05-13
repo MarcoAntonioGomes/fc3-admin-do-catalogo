@@ -1,3 +1,21 @@
+google:
+  cloud:
+    credentials: ${GOOGLE_CLOUD_CREDENTIALS}
+    project-id: ${GOOGLE_CLOUD_PROJECT_ID}
+  storage:
+    catalogo-video:
+      bucket: marco_catalogo_videos
+      connectTimeout: 1000
+      readTimeout: 2000
+      retryMaxAttempts: 2
+      retryDelay: 50
+      retryMaxDelay: 50
+      retryMultipier: 1.0
+logging:
+  level:
+    ROOT: INFO
+    com.fullcycle.admin.catalogo : DEBUG
+
 server:
   port: 8050
   servlet:

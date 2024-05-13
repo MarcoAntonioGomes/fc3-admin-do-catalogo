@@ -1,7 +1,7 @@
 
 
 CREATE TABLE genres (
-            id VARCHAR(36) NOT NULL PRIMARY KEY,
+            id CHAR(32) NOT NULL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
             description VARCHAR(4000),
             active BOOLEAN NOT NULL DEFAULT TRUE,
@@ -11,8 +11,8 @@ CREATE TABLE genres (
 );
 
 CREATE TABLE genres_categories (
-            genre_id VARCHAR(36) NOT NULL,
-            category_id VARCHAR(36) NOT NULL,
+            genre_id CHAR(32) NOT NULL,
+            category_id CHAR(32) NOT NULL,
             PRIMARY KEY (genre_id, category_id),
             CONSTRAINT idx_genre_category UNIQUE (genre_id, category_id),
             CONSTRAINT fk_genre_id FOREIGN KEY (genre_id) REFERENCES genres (id) ON DELETE CASCADE,

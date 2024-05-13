@@ -10,7 +10,9 @@ repositories {
 }
 
 dependencies {
+
     testImplementation('com.github.javafaker:javafaker:1.0.2')
+    implementation 'io.vavr:vavr:0.10.4'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
@@ -19,6 +21,17 @@ configurations {
     testClasses {
         extendsFrom(testImplementation)
     }
+}
+
+
+
+task testJar(type: Jar) {
+    from sourceSets.test.output
+    archiveClassifier.set('test')
+}
+
+artifacts {
+    testClasses testJar
 }
 
 test {

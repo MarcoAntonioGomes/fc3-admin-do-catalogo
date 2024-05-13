@@ -138,7 +138,7 @@ public class GenreTest {
     }
 
     @Test
-    public void givenAValidInactiveGenre_whenCallUpdateWithActivate_shouldReceiveGenreUpdated() {
+    public void givenAValidInactiveGenre_whenCallUpdateWithActivate_shouldReceiveGenreUpdated() throws InterruptedException {
         final var expectedName = "Ação";
         final var expectedIsActive = true;
         final var expectedCategories = List.of(CategoryID.from("123"));
@@ -152,6 +152,7 @@ public class GenreTest {
         final var actualCreatedAt = actualGenre.getCreatedAt();
         final var actualUpdatedAt = actualGenre.getUpdatedAt();
 
+        sleep(1000);
         actualGenre.update(expectedName, expectedIsActive, expectedCategories);
 
         Assertions.assertNotNull(actualGenre.getId());
@@ -227,7 +228,7 @@ public class GenreTest {
     }
 
     @Test
-    public void givenAValidGenre_whenCallUpdateWithNullCategories_shouldReceiveOK() {
+    public void givenAValidGenre_whenCallUpdateWithNullCategories_shouldReceiveOK() throws InterruptedException {
         final var expectedName = "Ação";
         final var expectedIsActive = true;
         final var expectedCategories = new ArrayList<CategoryID>();
@@ -237,6 +238,7 @@ public class GenreTest {
         final var actualCreatedAt = actualGenre.getCreatedAt();
         final var actualUpdatedAt = actualGenre.getUpdatedAt();
 
+        sleep(1000);
         Assertions.assertDoesNotThrow(() -> {
             actualGenre.update(expectedName, expectedIsActive, null);
         });
@@ -251,7 +253,7 @@ public class GenreTest {
     }
 
     @Test
-    public void givenAValidEmptyCategoriesGenre_whenCallAddCategory_shouldReceiveOK() {
+    public void givenAValidEmptyCategoriesGenre_whenCallAddCategory_shouldReceiveOK() throws InterruptedException {
         final var seriesID = CategoryID.from("123");
         final var moviesID = CategoryID.from("456");
 
@@ -266,6 +268,7 @@ public class GenreTest {
         final var actualCreatedAt = actualGenre.getCreatedAt();
         final var actualUpdatedAt = actualGenre.getUpdatedAt();
 
+        sleep(1000);
         actualGenre.addCategory(seriesID);
         actualGenre.addCategory(moviesID);
 

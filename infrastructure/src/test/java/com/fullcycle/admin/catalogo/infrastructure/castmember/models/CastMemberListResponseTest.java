@@ -1,7 +1,7 @@
 package com.fullcycle.admin.catalogo.infrastructure.castmember.models;
 
-import com.fullcycle.admin.catalogo.Fixture;
 import com.fullcycle.admin.catalogo.JacksonTest;
+import com.fullcycle.admin.catalogo.domain.Fixture;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
