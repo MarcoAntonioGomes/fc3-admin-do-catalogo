@@ -1,7 +1,7 @@
 package com.fullcycle.admin.catalogo.infrastructure.configuration;
 
-import com.fullcycle.admin.catalogo.infrastructure.configuration.properties.GoogleCloudProperties;
-import com.fullcycle.admin.catalogo.infrastructure.configuration.properties.GoogleStorageProperties;
+import com.fullcycle.admin.catalogo.infrastructure.configuration.properties.google.GoogleCloudProperties;
+import com.fullcycle.admin.catalogo.infrastructure.configuration.properties.google.GoogleStorageProperties;
 import com.google.api.gax.retrying.RetrySettings;
 import com.google.auth.Credentials;
 import com.google.auth.oauth2.GoogleCredentials;
@@ -12,7 +12,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
 import org.threeten.bp.Duration;
 
 import java.io.ByteArrayInputStream;
@@ -30,7 +29,7 @@ public class GoogleCloudConfig {
     }
 
     @Bean
-    @ConfigurationProperties("google.cloud.storage.catalogo-video")
+    @ConfigurationProperties("google.cloud.storage.catalogo-videos")
     public GoogleStorageProperties googleStorageProperties() {
         return new GoogleStorageProperties();
     }
@@ -63,7 +62,7 @@ public class GoogleCloudConfig {
                 .setInitialRetryDelay(Duration.ofMillis(storageProperties.getRetryDelay()))
                 .setMaxRetryDelay(Duration.ofMillis(storageProperties.getRetryMaxDelay()))
                 .setMaxAttempts(storageProperties.getRetryMaxAttempts())
-                .setRetryDelayMultiplier(storageProperties.getRetryMultipier())
+                .setRetryDelayMultiplier(storageProperties.getRetryMultiplier())
                 .build();
 
         final var options = StorageOptions.newBuilder()

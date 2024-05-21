@@ -1,6 +1,6 @@
 package com.fullcycle.admin.catalogo.infrastructure.services.impl;
 
-import com.fullcycle.admin.catalogo.domain.video.Resource;
+import com.fullcycle.admin.catalogo.domain.resource.Resource;
 import com.fullcycle.admin.catalogo.infrastructure.services.StorageService;
 import com.google.cloud.storage.BlobId;
 import com.google.cloud.storage.BlobInfo;
@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.StreamSupport;
+
 
 public class GCStorageService implements StorageService {
 
@@ -34,16 +35,16 @@ public class GCStorageService implements StorageService {
     @Override
     public Optional<Resource> get(String name) {
 
-       final var blob = Optional.ofNullable( this.storage.get(this.bucket, name));
+        final var blob = Optional.ofNullable(this.storage.get(this.bucket, name));
 
-        return blob.map(b ->  Resource.with(b.getContent(), b.getContentType(), name, null));
+        return blob.map(b -> Resource.with(b.getContent(), b.getCrc32cToHexString(), b.getContentType(), name));
     }
 
     @Override
     public void store(String name, Resource resource) {
         final var blobInfo = BlobInfo.newBuilder(this.bucket, name)
                 .setContentType(resource.contentType())
-                .setCrc32cFromHexString("")
+                .setCrc32cFromHexString(resource.checksum())
                 .build();
 
         this.storage.create(blobInfo, resource.content());

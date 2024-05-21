@@ -1,4 +1,4 @@
-package com.fullcycle.admin.catalogo.infrastructure.configuration.properties;
+package com.fullcycle.admin.catalogo.infrastructure.configuration.properties.google;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +13,7 @@ public class GoogleStorageProperties implements InitializingBean {
     private int retryMaxAttempts;
     private int retryDelay;
     private int retryMaxDelay;
-    private double retryMultipier;
+    private double retryMultiplier;
 
     public String getBucket() {
         return bucket;
@@ -63,12 +63,12 @@ public class GoogleStorageProperties implements InitializingBean {
         this.retryMaxDelay = retryMaxDelay;
     }
 
-    public double getRetryMultipier() {
-        return retryMultipier;
+    public double getRetryMultiplier() {
+        return retryMultiplier;
     }
 
-    public void setRetryMultipier(double retryMultipier) {
-        this.retryMultipier = retryMultipier;
+    public void setRetryMultiplier(double retryMultiplier) {
+        this.retryMultiplier = retryMultiplier;
     }
 
     @Override
@@ -85,7 +85,7 @@ public class GoogleStorageProperties implements InitializingBean {
                 ", retryMaxAttempts=" + retryMaxAttempts +
                 ", retryDelay=" + retryDelay +
                 ", retryMaxDelay=" + retryMaxDelay +
-                ", retryMultipier=" + retryMultipier +
+                ", retryMultipier=" + retryMultiplier +
                 '}';
     }
 }

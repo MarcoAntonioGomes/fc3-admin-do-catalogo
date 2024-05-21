@@ -1,4 +1,4 @@
-package com.fullcycle.admin.catalogo.domain.video;
+package com.fullcycle.admin.catalogo.domain.resource;
 
 import com.fullcycle.admin.catalogo.domain.ValueObject;
 
