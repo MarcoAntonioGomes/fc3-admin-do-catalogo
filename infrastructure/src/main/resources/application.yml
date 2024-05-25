@@ -6,7 +6,7 @@ amqp:
       exchange: video.events
       routing-key: video.created
       queue: video-created.queue
-    video-econded:
+    video-encoded:
       exchange: video.events
       routing-key: video.econded
       queue: video-encoded.queue

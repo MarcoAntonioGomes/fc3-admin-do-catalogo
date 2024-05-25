@@ -9,3 +9,4 @@
 /infrastructure/build/
 /infrastructure/build/classes/java/main/
 /infrastructure/build/classes/java/test/
+.env

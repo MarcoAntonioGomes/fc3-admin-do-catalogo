@@ -13,6 +13,4 @@ public class Main {
         SpringApplication.run(WebServerConfig.class, args);
     }
 
-    @RabbitListener(queues = "video-encoded.queue")
-    void dummyListener(){}
 }

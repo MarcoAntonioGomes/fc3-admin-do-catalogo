@@ -1,6 +1,7 @@
 package com.fullcycle.admin.catalogo.domain.genre;
 
 
+import com.fullcycle.admin.catalogo.domain.UnitTest;
 import com.fullcycle.admin.catalogo.domain.category.CategoryID;
 import com.fullcycle.admin.catalogo.domain.exceptions.NotificationException;
 import org.junit.jupiter.api.Assertions;
@@ -11,7 +12,7 @@ import java.util.List;
 
 import static java.lang.Thread.sleep;
 
-public class GenreTest {
+public class GenreTest extends UnitTest {
 
 
     @Test

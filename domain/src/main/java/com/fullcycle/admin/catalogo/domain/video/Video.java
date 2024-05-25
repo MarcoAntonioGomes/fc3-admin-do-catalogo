@@ -127,7 +127,7 @@ public class Video extends AggregateRoot<VideoID> {
         this.updatedAt = InstantUtils.now();
 
 
-        onAudioVideoMediaUpdated(video);
+        onAudioVideoMediaUpdated(trailer);
 
         return this;
     }

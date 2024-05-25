@@ -20,7 +20,7 @@ public class AmqpConfig {
     }
 
     @Bean
-    @ConfigurationProperties(prefix = "amqp.queues.video-econded")
+    @ConfigurationProperties(prefix = "amqp.queues.video-encoded")
     @VideoEncodedQueue
     public QueueProperties videoEncodedQueueProperties() {
         return new QueueProperties();
