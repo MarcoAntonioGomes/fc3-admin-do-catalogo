@@ -54,6 +54,9 @@ jobs:
       # 3. Valida a existência do gradle wrapper
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+      #  Permissão no gradlew
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
       # 4. Realizar o build para gerar o artefato final
       - name: Build da aplicação
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
